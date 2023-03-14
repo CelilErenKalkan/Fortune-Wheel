@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb03e6082302682428ce5727c9df1e95, type: 3}
+  m_Name: wheel_gold
+  m_EditorClassIdentifier: 
+  wheelType: 2
+  wheelSprite: {fileID: 21300000, guid: 71d1365428b900044b885c45173f8630, type: 3}
+  indicatorSprite: {fileID: 21300000, guid: 3e5fdfcc5757b104895b36afe58c30bd, type: 3}
+  prizes:
+  - {fileID: 11400000, guid: adea0145593a266438db5b1fce9c0b88, type: 2}
+  - {fileID: 11400000, guid: 1e6209abf52263244bcdfe9a1b38eb47, type: 2}
+  - {fileID: 11400000, guid: 4a97fa45a8d65594f8e93708beccc860, type: 2}
+  - {fileID: 11400000, guid: 81e25eef5cddc3c4392f0775942b3de9, type: 2}
+  - {fileID: 11400000, guid: cc0116556f8d8fa46b8cab850c4b66ec, type: 2}
+  - {fileID: 11400000, guid: 91282ff30506e604dac98063639c4e60, type: 2}
+  - {fileID: 11400000, guid: 53cbeb73716e5c84bbba7f324e88e061, type: 2}
+  - {fileID: 11400000, guid: cb9ccd943e95b394d9d62f26b122e971, type: 2}
+  - {fileID: 11400000, guid: 65132bbb86afbd446a937269b5cfbc90, type: 2}
+  - {fileID: 11400000, guid: 97afabd9c012c44489636aec2731da79, type: 2}
