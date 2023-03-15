@@ -55,16 +55,13 @@ public static class FileHandler
 
     private static string ReadFile(string path)
     {
-        if (File.Exists(path))
+        if (!File.Exists(path)) return "";
+        
+        using (StreamReader reader = new StreamReader(path))
         {
-            using (StreamReader reader = new StreamReader(path))
-            {
-                string content = reader.ReadToEnd();
-                return content;
-            }
+            string content = reader.ReadToEnd();
+            return content;
         }
-
-        return "";
     }
 }
 

@@ -4,16 +4,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-[System.Serializable]
-public struct MoneyData
-{
-    public int money;
-    public int gold;
-}
-
 public class UIManager : MonoSingleton<UIManager>
 {
-    public MoneyData moneyData;
+    private CurrencyManager currencyManager;
     
     [SerializeField] private FortuneWheel fortuneWheel;
 
@@ -53,12 +46,10 @@ public class UIManager : MonoSingleton<UIManager>
     // Start is called before the first frame update
     private void Start()
     {
-        zoneNo = 1;
-        moneyData = FileHandler.ReadFromJson<MoneyData>("MoneyData.json");
-        UpdateMoney(0);
-        UpdateGold(0);
+        currencyManager = CurrencyManager.Instance;
         SetZoneNoUI(true);
         SetPrizeList();
+        UpdateCurrencyUI();
     }
 
     private void AddNewItemToTheList(InventorySlot slot)
@@ -97,7 +88,7 @@ public class UIManager : MonoSingleton<UIManager>
             {
                 prizeListImages[i].sprite = obtainedPrizes[i].prize.icon;
                 prizeListImages[i].enabled = true;
-                prizeAmounts[i].text = Inventory.SetAmountText(obtainedPrizes[i].amount);
+                prizeAmounts[i].text = Inventory.Inventory.SetAmountText(obtainedPrizes[i].amount);
             }
             else
             {
@@ -106,6 +97,12 @@ public class UIManager : MonoSingleton<UIManager>
                 prizeAmounts[i].text = "";
             }
         }
+    }
+
+    private void UpdateCurrencyUI()
+    {
+        moneyText.text = currencyManager.currency.money + "$";
+        goldText.text = currencyManager.currency.gold.ToString();
     }
 
     public void ResetGame()
@@ -149,19 +146,6 @@ public class UIManager : MonoSingleton<UIManager>
         }
     }
 
-    private void UpdateMoney(int amount)
-    {
-        moneyData.money += amount;
-        FileHandler.SaveToJson(moneyData, "MoneyData.json");
-        moneyText.text = moneyData.money + "$";
-    }
-    
-    private void UpdateGold(int amount)
-    {
-        moneyData.gold += amount;
-        goldText.text = moneyData.gold.ToString();
-    }
-
     public void CollectAllRewards()
     {
         foreach (var slot in obtainedPrizes)
@@ -169,14 +153,16 @@ public class UIManager : MonoSingleton<UIManager>
             switch (slot.prize.prizeType)
             {
                 case PrizeType.Money:
-                    UpdateMoney(slot.amount);
+                    CurrencyManager.onMoneyUpdate?.Invoke(slot.amount);
+                    UpdateCurrencyUI();
                     break;
                 case PrizeType.Gold:
-                    UpdateGold(slot.amount);
+                    CurrencyManager.onGoldUpdate?.Invoke(slot.amount);
+                    UpdateCurrencyUI();
                     break;
                 case PrizeType.Item:
                 default:
-                    Inventory.AddNewItem(slot);
+                    Inventory.Inventory.AddNewItem(slot);
                     break;
             }
         }
@@ -186,10 +172,11 @@ public class UIManager : MonoSingleton<UIManager>
 
     public void Revive()
     {
-        if (moneyData.gold < RevivePrice) return;
+        if (currencyManager.currency.gold < RevivePrice) return;
         
         bombPanel.SetActive(false);
-        UpdateGold(RevivePrice * -1);
+        CurrencyManager.onGoldUpdate?.Invoke(RevivePrice * -1);
+        UpdateCurrencyUI();
     }
 
     private void SetPrizeCard(InventorySlot slot)
@@ -237,13 +224,13 @@ public class UIManager : MonoSingleton<UIManager>
 
     private void OnEnable()
     {
-        FortuneWheel.OnSpinEndEvent += OnSpinEnd;
-        FortuneWheel.OnSpinStartEvent += OnSpinStart;
+        FortuneWheel.onSpinEndEvent += OnSpinEnd;
+        FortuneWheel.onSpinStartEvent += OnSpinStart;
     }
     
     private void OnDisable()
     {
-        FortuneWheel.OnSpinEndEvent -= OnSpinEnd;
-        FortuneWheel.OnSpinStartEvent -= OnSpinStart;
+        FortuneWheel.onSpinEndEvent -= OnSpinEnd;
+        FortuneWheel.onSpinStartEvent -= OnSpinStart;
     }
 }

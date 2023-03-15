@@ -9,70 +9,67 @@ using Random = UnityEngine.Random;
 
 public class FortuneWheel : MonoBehaviour
 {
-    private Wheel currentWheel;
-    private UIManager _uiManager;
-    
     [Header("REFERENCES:")]
     [SerializeField] private Image wheelCircle;
     [SerializeField] private Image indicator;
     [SerializeField] private Transform wheelPiecesParent;
     [SerializeField] private Wheel[] wheels;
+    
+    private Wheel currentWheel;
+    private UIManager uiManager;
 
-    [Space] [Header("SETTINGS:")] 
+    [Space] [Header("WHEEL SETTINGS:")] 
     [Range(1, 20)] public int spinDuration = 8;
     [SerializeField] [Range(.2f, 2f)] private float wheelSize = 1f;
-
-    [Space] [Header("SLICES:")]
+    
     [HideInInspector] public InventorySlot[] slices = new InventorySlot[8];
 
     // Events
-    public static Action OnSpinStartEvent;
-    public static Action<InventorySlot> OnSpinEndEvent;
-
-
+    public static Action onSpinStartEvent;
+    public static Action<InventorySlot> onSpinEndEvent;
+    
     private bool isSpinning;
-    private float pieceAngle;
+    private const float PieceAngle = 45;
     private double accumulatedWeight;
     private System.Random rand = new System.Random();
     private List<int> nonZeroChancesIndices = new List<int>();
 
     private void Start()
     {
-        _uiManager = UIManager.Instance;
-        pieceAngle = 360 / slices.Length;
+        uiManager = UIManager.Instance;
 
         SetWheel();
     }
 
-    private int SetRandomAmount(int ratio, int maxValue)
+    private static int SetRandomAmountOfPrize(int ratio, int maxValue)
     {
         var randomAmount = Random.Range(1, maxValue / ratio);
         return randomAmount * ratio;
     }
 
-    private void DrawPiece(int index)
+    private void DrawSlice(int index)
     {
         var piece = slices[index];
         var pieceTransform = wheelPiecesParent.GetChild(index);
 
         if (pieceTransform.GetChild(0).TryGetComponent(out Image image)) image.sprite = piece.prize.icon;
         image.enabled = true;
-        if (pieceTransform.GetChild(1).TryGetComponent(out TMP_Text text)) text.text = Inventory.SetAmountText(piece.amount);
+        if (pieceTransform.GetChild(1).TryGetComponent(out TMP_Text text)) text.text = Inventory.Inventory.SetAmountText(piece.amount);
     }
 
-    private void Generate()
+    private void GenerateSlices()
     {
         for (var i = 0; i < slices.Length; i++)
-            DrawPiece(i);
+            DrawSlice(i);
     }
 
     private void SelectRandomPrizes()
     {
         var bombIndex = -1;
-        if (!_uiManager.IsSuperSafeZone() && !_uiManager.IsSafeZone())
+        if (!uiManager.IsSuperSafeZone() && !uiManager.IsSafeZone())
         {
             bombIndex = Random.Range(0, slices.Length);
-            slices[bombIndex].prize = _uiManager.bomb;
+            slices[bombIndex].prize = uiManager.bomb;
             slices[bombIndex].amount = 0;
         }
 
@@ -81,26 +78,26 @@ public class FortuneWheel : MonoBehaviour
             if (i == bombIndex) continue;
             var randomItem = Random.Range(0, currentWheel.prizes.Length);
             slices[i].prize = currentWheel.prizes[randomItem];
-            slices[i].amount = SetRandomAmount(slices[i].prize.ratio, slices[i].prize.maxValue);
+            slices[i].amount = SetRandomAmountOfPrize(slices[i].prize.ratio, slices[i].prize.maxValue);
         }
     }
 
-    private void SetCurrentWheel()
+    private void SetCurrentWheelType()
     {
-        if (_uiManager.IsSuperSafeZone()) currentWheel = wheels[2];
-        else if (_uiManager.IsSafeZone()) currentWheel = wheels[1];
+        if (uiManager.IsSuperSafeZone()) currentWheel = wheels[2];
+        else if (uiManager.IsSafeZone()) currentWheel = wheels[1];
         else currentWheel = wheels[0];
     }
 
     public void SetWheel()
     {
-        SetCurrentWheel();
+        SetCurrentWheelType();
 
         wheelCircle.sprite = currentWheel.wheelSprite;
         indicator.sprite = currentWheel.indicatorSprite;
 
         SelectRandomPrizes();
-        Generate();
+        GenerateSlices();
         CalculateWeightsAndIndices();
     }
 
@@ -110,7 +107,7 @@ public class FortuneWheel : MonoBehaviour
         if (isSpinning) return;
         
         isSpinning = true;
-        OnSpinStartEvent?.Invoke();
+        onSpinStartEvent?.Invoke();
 
         var index = GetRandomPieceIndex();
         var piece = slices[index];
@@ -121,7 +118,7 @@ public class FortuneWheel : MonoBehaviour
             piece = slices[index];
         }
 
-        var angle = -(pieceAngle * index);
+        var angle = -(PieceAngle * index);
         var targetRotation = Vector3.back * (angle + 2 * 360 * spinDuration);
 
         //float prevAngle = wheelCircle.eulerAngles.z + halfPieceAngle ;
@@ -136,7 +133,7 @@ public class FortuneWheel : MonoBehaviour
             .OnUpdate(() =>
             {
                 var diff = Mathf.Abs(prevAngle - currentAngle);
-                if (diff >= pieceAngle)
+                if (diff >= PieceAngle)
                 {
                     prevAngle = currentAngle;
                     isIndicatorOnTheLine = !isIndicatorOnTheLine;
@@ -147,30 +144,8 @@ public class FortuneWheel : MonoBehaviour
             .OnComplete(() =>
             {
                 isSpinning = false;
-                OnSpinEndEvent?.Invoke(piece);
+                onSpinEndEvent?.Invoke(piece);
             });
-    }
-
-    private void OnSpinStart()
-    {
-        
-    }
-
-    private void OnSpinEnd(InventorySlot item)
-    {
-        //SetWheel();
-    }
-
-    private void OnEnable()
-    {
-        OnSpinStartEvent += OnSpinStart;
-        OnSpinEndEvent += OnSpinEnd;
-    }
-    
-    private void OnDisable()
-    {
-        OnSpinStartEvent -= OnSpinStart;
-        OnSpinEndEvent -= OnSpinEnd;
     }
 
     private int GetRandomPieceIndex()

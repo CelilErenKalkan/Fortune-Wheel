@@ -5,7 +5,7 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
 {
     private static volatile T _instance;
 
-    private bool _isInitialized;
+    private bool isInitialized;
 
     public static T Instance
     {
@@ -13,13 +13,13 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
         {
             if (_instance != null) return _instance;
             _instance = FindObjectOfType(typeof(T)) as T;
-            if (_instance != null && !_instance._isInitialized) Instance.Initialize();
+            if (_instance != null && !_instance.isInitialized) Instance.Initialize();
             return _instance;
         }
     }
 
     protected virtual void Initialize()
     {
-        _isInitialized = true;
+        isInitialized = true;
     }
 }
