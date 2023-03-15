@@ -11,11 +11,12 @@ public class CurrencyManager : MonoSingleton<CurrencyManager>
 {
     public Currency currency;
 
+    private UIManager uiManager;
+
     public static Action<int> onMoneyUpdate;
     public static Action<int> onGoldUpdate;
-
-    // Start is called before the first frame update
-    private void Start()
+    
+    private void Awake()
     {
         currency = FileHandler.ReadFromJson<Currency>("Currency.json");
     }

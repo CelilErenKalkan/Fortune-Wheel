@@ -40,12 +40,13 @@ public class UIManager : MonoSingleton<UIManager>
     
     private const int RevivePrice = 10;
     
-    public bool IsSafeZone() => zoneNo % 5 == 0 || zoneNo == 1;
-    public bool IsSuperSafeZone() => zoneNo % 30 == 0 && zoneNo != 0;
+    public bool IsSafeZone() => zoneNo % 5 == 0;
+    public bool IsSuperSafeZone() => zoneNo % 30 == 0;
 
     // Start is called before the first frame update
     private void Start()
     {
+        zoneNo = 1;
         currencyManager = CurrencyManager.Instance;
         SetZoneNoUI(true);
         SetPrizeList();
@@ -116,6 +117,7 @@ public class UIManager : MonoSingleton<UIManager>
     public void StartANewGame()
     {
         prizePanel.SetActive(false);
+        spinEndPanel.SetActive(false);
         fortuneWheel.SetWheel();
         SetZoneNoUI(true);
     }
