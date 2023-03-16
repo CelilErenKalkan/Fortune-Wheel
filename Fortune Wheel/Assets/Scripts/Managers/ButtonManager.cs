@@ -11,7 +11,8 @@ namespace UI.Buttons
 
         private UIManager uiManager;
 
-        private void OnValidate()
+        // Start is called before the first frame update
+        private void Start()
         {
             uiManager = UIManager.Instance;
             

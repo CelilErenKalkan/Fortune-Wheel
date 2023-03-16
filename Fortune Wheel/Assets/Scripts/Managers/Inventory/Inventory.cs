@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using ScriptableObjects;
 
-namespace Inventory
+namespace Managers.Inventory
 {
     [System.Serializable]
     public static class Inventory

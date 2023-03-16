@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Managers.Inventory;
 using ScriptableObjects;
 using TMPro;
 using UnityEngine;
@@ -53,11 +54,6 @@ public class UIManager : MonoSingleton<UIManager>
         UpdateCurrencyUI();
     }
 
-    private void SetButtonEvents()
-    {
-        
-    }
-
     private void AddNewItemToTheList(InventorySlot slot)
     {
         foreach (var prize in obtainedPrizes)
@@ -94,7 +90,7 @@ public class UIManager : MonoSingleton<UIManager>
             {
                 prizeListImages[i].sprite = obtainedPrizes[i].prize.icon;
                 prizeListImages[i].enabled = true;
-                prizeAmounts[i].text = Inventory.Inventory.SetAmountText(obtainedPrizes[i].amount);
+                prizeAmounts[i].text = Inventory.SetAmountText(obtainedPrizes[i].amount);
             }
             else
             {
@@ -169,7 +165,7 @@ public class UIManager : MonoSingleton<UIManager>
                     break;
                 case PrizeType.Item:
                 default:
-                    Inventory.Inventory.AddNewItem(slot);
+                    Inventory.AddNewItem(slot);
                     break;
             }
         }

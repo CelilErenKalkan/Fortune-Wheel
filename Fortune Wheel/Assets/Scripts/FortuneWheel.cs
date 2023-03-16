@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using Managers.Inventory;
 using ScriptableObjects;
 using TMPro;
 using UnityEngine;
@@ -55,7 +56,7 @@ public class FortuneWheel : MonoBehaviour
 
         if (pieceTransform.GetChild(0).TryGetComponent(out Image image)) image.sprite = piece.prize.icon;
         image.enabled = true;
-        if (pieceTransform.GetChild(1).TryGetComponent(out TMP_Text text)) text.text = Inventory.Inventory.SetAmountText(piece.amount);
+        if (pieceTransform.GetChild(1).TryGetComponent(out TMP_Text text)) text.text = Inventory.SetAmountText(piece.amount);
     }
 
     private void GenerateSlices()

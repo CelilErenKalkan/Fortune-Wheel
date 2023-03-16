@@ -3,7 +3,7 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - CurrencyManager
     - FortuneWheel
-    - Inventory.InventoryManager
+    - Managers.Inventory.InventoryManager
     - ScriptableObjects.Prize
     - ScriptableObjects.Wheel
     - UI.Buttons.ButtonManager
@@ -144,17 +144,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4978}
     - Class: 114
-      Script: {instanceID: 5524}
+      Script: {instanceID: 5286}
     - Class: 114
-      Script: {instanceID: 5668}
+      Script: {instanceID: 5526}
     - Class: 114
-      Script: {instanceID: 5754}
+      Script: {instanceID: 5670}
     - Class: 114
-      Script: {instanceID: 5978}
+      Script: {instanceID: 5756}
     - Class: 114
-      Script: {instanceID: 6010}
+      Script: {instanceID: 5980}
     - Class: 114
-      Script: {instanceID: 27510}
+      Script: {instanceID: 6012}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -732,6 +732,12 @@ ScriptsOnlyBuild:
     className: Text
   - hash:
       serializedVersion: 2
+      Hash: 0362657088c37884395823554c521879
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: UI.Buttons
+    className: ButtonManager
+  - hash:
+      serializedVersion: 2
       Hash: 2574ac7d50617d23cdefe4ad22f5e1ad
     assemblyName: Unity.VisualScripting.State.dll
     namespaceName: Unity.VisualScripting
@@ -770,7 +776,7 @@ ScriptsOnlyBuild:
       serializedVersion: 2
       Hash: e6930bf3a3aad7180e0a686fd60b3c8d
     assemblyName: Assembly-CSharp.dll
-    namespaceName: Inventory
+    namespaceName: Managers.Inventory
     className: InventoryManager
   - hash:
       serializedVersion: 2
@@ -1018,12 +1024,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 0362657088c37884395823554c521879
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: UI.Buttons
-    className: ButtonManager
   platform: 13
   scenePathNames:
   - Assets/Scenes/GameScene.unity

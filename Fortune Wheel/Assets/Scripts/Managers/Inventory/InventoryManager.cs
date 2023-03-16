@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Inventory
+namespace Managers.Inventory
 {
     public class InventoryManager : MonoSingleton<InventoryManager>
     {
@@ -22,6 +22,8 @@ namespace Inventory
         {
             Inventory.LoadInventory();
             inventory = Inventory.Slots;
+            openInventory.onClick.AddListener(OpenInventory);
+            closeInventory.onClick.AddListener(CloseInventory);
             SetSlots();
         }
 
@@ -58,7 +60,7 @@ namespace Inventory
                 {
                     slotImages[i].sprite = inventory[i].prize.icon;
                     slotImages[i].enabled = true;
-                    itemAmountList[i].text = Inventory.SetAmountText(inventory[i].amount);
+                    itemAmountList[i].text = global::Managers.Inventory.Inventory.SetAmountText(inventory[i].amount);
                 }
                 else
                 {
@@ -77,12 +79,6 @@ namespace Inventory
                 image.enabled = false;
                 if (slotsParent.GetChild(i).GetChild(0).TryGetComponent(out TMP_Text text)) itemAmountList.Add(text);
             }
-        }
-
-        private void OnValidate()
-        {
-            openInventory.onClick.AddListener(OpenInventory);
-            closeInventory.onClick.AddListener(CloseInventory);
         }
     }
 }
