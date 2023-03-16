@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5641b460acc765040b238fd3fa8371c2, type: 3}
-  m_Name: Item_grenade_emp
+  m_Name: item_grenade_emp
   m_EditorClassIdentifier: 
   itemName: EMP
   icon: {fileID: 21300000, guid: 7efac03c216b32c4ab4a93d1f0b3c097, type: 3}

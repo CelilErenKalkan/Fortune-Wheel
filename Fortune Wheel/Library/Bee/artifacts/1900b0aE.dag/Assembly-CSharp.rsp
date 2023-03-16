@@ -370,6 +370,14 @@
 "Assets/Scripts/ScriptableObjects/InventorySlot.cs"
 "Assets/Scripts/ScriptableObjects/Prize.cs"
 "Assets/Scripts/ScriptableObjects/Wheel.cs"
+"Assets/Scripts/UI/Buttons/Button.cs"
+"Assets/Scripts/UI/Buttons/CloseInventoryButton.cs"
+"Assets/Scripts/UI/Buttons/CollectButton.cs"
+"Assets/Scripts/UI/Buttons/ContinueButton.cs"
+"Assets/Scripts/UI/Buttons/GiveUpButton.cs"
+"Assets/Scripts/UI/Buttons/OpenInventoryButton.cs"
+"Assets/Scripts/UI/Buttons/ReviveButton.cs"
+"Assets/Scripts/UI/Buttons/SpinButton.cs"
 "Assets/Scripts/UIManager.cs"
 -langversion:9.0
 

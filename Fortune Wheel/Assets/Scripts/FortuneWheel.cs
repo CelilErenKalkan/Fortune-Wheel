@@ -13,8 +13,9 @@ public class FortuneWheel : MonoBehaviour
     [SerializeField] private Image wheelCircle;
     [SerializeField] private Image indicator;
     [SerializeField] private Transform wheelPiecesParent;
+    [SerializeField] private Button spinButton;
     [SerializeField] private Wheel[] wheels;
-    
+
     private Wheel currentWheel;
     private UIManager uiManager;
 
@@ -28,7 +29,7 @@ public class FortuneWheel : MonoBehaviour
     public static Action onSpinStartEvent;
     public static Action<InventorySlot> onSpinEndEvent;
     
-    private bool isSpinning;
+    private bool isSpinning, canSpin;
     private const float PieceAngle = 45;
     private double accumulatedWeight;
     private System.Random rand = new System.Random();
@@ -99,14 +100,16 @@ public class FortuneWheel : MonoBehaviour
         SelectRandomPrizes();
         GenerateSlices();
         CalculateWeightsAndIndices();
+        canSpin = true;
     }
 
 
     public void Spin()
     {
-        if (isSpinning) return;
+        if (isSpinning || !canSpin) return;
         
         isSpinning = true;
+        canSpin = false;
         onSpinStartEvent?.Invoke();
 
         var index = GetRandomPieceIndex();
@@ -182,5 +185,6 @@ public class FortuneWheel : MonoBehaviour
     private void OnValidate()
     {
         transform.localScale = new Vector3(wheelSize, wheelSize, 1f);
+        spinButton.onClick.AddListener(Spin);
     }
 }

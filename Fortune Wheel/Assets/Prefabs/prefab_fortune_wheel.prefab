@@ -234,19 +234,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114681287680765176}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114361574848870256}
-        m_TargetAssemblyTypeName: PickerWheel, Assembly-CSharp
-        m_MethodName: Spin
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1323661475590176
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,6 +294,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2ad47fa1b8ee7784a90c5a2d042825b6, type: 2}
   - {fileID: 11400000, guid: 6ff7c0f9d13f9174ba9fa79f253eab9d, type: 2}
   - {fileID: 11400000, guid: 5f4a3afd4e3a04942956cd07173e0bd0, type: 2}
+  spinButton: {fileID: 7671114042435833047}
   spinDuration: 8
   wheelSize: 1.5
   slices:

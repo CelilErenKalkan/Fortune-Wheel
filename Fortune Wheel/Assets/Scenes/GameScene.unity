@@ -1473,9 +1473,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.392}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1633,9 +1633,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.392}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2770,7 +2770,7 @@ GameObject:
   - component: {fileID: 756312041}
   - component: {fileID: 756312040}
   m_Layer: 5
-  m_Name: ShowInventory
+  m_Name: OpenInventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2840,19 +2840,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 756312041}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1732521686}
-        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
-        m_MethodName: ShowInventory
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &756312041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3218,9 +3206,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.392}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6348,6 +6336,7 @@ GameObject:
   - component: {fileID: 1316820925}
   - component: {fileID: 1316820929}
   - component: {fileID: 1316820930}
+  - component: {fileID: 1316820931}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6471,7 +6460,7 @@ MonoBehaviour:
   reviveText: {fileID: 532291651}
   prizeImage: {fileID: 2062278610}
   prizeFrame: {fileID: 1406292041}
-  spinButton: {fileID: 1531773575}
+  spinButtonImage: {fileID: 1531773575}
   itemFrames:
   - {fileID: 21300000, guid: 51ee138ba739c4646be8d6a99d6c14ca, type: 3}
   - {fileID: 21300000, guid: 534edca3e719aa247941bf9d8606a4f2, type: 3}
@@ -6495,6 +6484,23 @@ MonoBehaviour:
   currency:
     money: 0
     gold: 0
+--- !u!114 &1316820931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316820924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56c79ddb77e41164b8d3009260737347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectButton: {fileID: 1682012133}
+  continueButton: {fileID: 1958782556}
+  giveUpButton: {fileID: 1402337646}
+  goBackButton: {fileID: 1812911824}
+  reviveButton: {fileID: 1019710513}
 --- !u!1 &1324776271
 GameObject:
   m_ObjectHideFlags: 0
@@ -6577,19 +6583,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1324776274}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1732521686}
-        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
-        m_MethodName: ShowInventory
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1324776274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7759,6 +7753,8 @@ MonoBehaviour:
   slotsParent: {fileID: 1883563194}
   showInventoryButton: {fileID: 756312038}
   inventoryObject: {fileID: 1734254655}
+  openInventory: {fileID: 756312040}
+  closeInventory: {fileID: 1324776273}
 --- !u!1 &1734254655
 GameObject:
   m_ObjectHideFlags: 0
@@ -8023,19 +8019,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1812911825}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1316820929}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: StartANewGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1812911825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8654,19 +8638,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1958782557}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1316820929}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: StartANewGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1958782557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8766,7 +8738,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: a6b2ae1f06863a8489fe1acea83795d5, type: 3}
-  m_Type: 1
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

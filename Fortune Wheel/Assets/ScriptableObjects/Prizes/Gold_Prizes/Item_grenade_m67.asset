@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5641b460acc765040b238fd3fa8371c2, type: 3}
-  m_Name: Item_grenade_m67
+  m_Name: item_grenade_m67
   m_EditorClassIdentifier: 
   itemName: M67
   icon: {fileID: 21300000, guid: e6d8d46346dcd4d46b9a27c19c4340ca, type: 3}
