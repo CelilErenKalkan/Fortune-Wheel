@@ -39,7 +39,7 @@ public class FortuneWheel : MonoBehaviour
     private void Start()
     {
         uiManager = UIManager.Instance;
-
+        spinButton.onClick.AddListener(Spin);
         SetWheel();
     }
 
@@ -186,6 +186,5 @@ public class FortuneWheel : MonoBehaviour
     private void OnValidate()
     {
         transform.localScale = new Vector3(wheelSize, wheelSize, 1f);
-        spinButton.onClick.AddListener(Spin);
     }
 }
