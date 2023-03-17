@@ -6,6 +6,8 @@
 -a="C:\Users\celil\Desktop\Fortune-Wheel\Fortune Wheel\Library\PlayerScriptAssemblies\UnityEngine.UI.dll"
 -a="C:\Users\celil\Desktop\Fortune-Wheel\Fortune Wheel\Library\PlayerScriptAssemblies\Unity.VisualScripting.State.dll"
 -a="C:\Users\celil\Desktop\Fortune-Wheel\Fortune Wheel\Library\PlayerScriptAssemblies\Unity.VisualScripting.Core.dll"
+-a="C:\Users\celil\Desktop\Fortune-Wheel\Fortune Wheel\Library\PlayerScriptAssemblies\Unity.Recorder.dll"
+-a="C:\Users\celil\Desktop\Fortune-Wheel\Fortune Wheel\Library\PlayerScriptAssemblies\Unity.Recorder.Base.dll"
 -a="C:\Users\celil\Desktop\Fortune-Wheel\Fortune Wheel\Assets\Demigiant\DemiLib\Core\DemiLib.dll"
 -a="C:\Users\celil\Desktop\Fortune-Wheel\Fortune Wheel\Assets\Demigiant\DOTween\DOTween.dll"
 -a="C:\Users\celil\Desktop\Fortune-Wheel\Fortune Wheel\Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll"

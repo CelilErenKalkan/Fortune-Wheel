@@ -815,6 +815,15 @@
      <Reference Include="Unity.EditorCoroutines.Editor">
      <HintPath>C:\Users\celil\Desktop\Fortune-Wheel\Fortune Wheel\Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.Recorder.Editor">
+     <HintPath>C:\Users\celil\Desktop\Fortune-Wheel\Fortune Wheel\Library\ScriptAssemblies\Unity.Recorder.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Recorder">
+     <HintPath>C:\Users\celil\Desktop\Fortune-Wheel\Fortune Wheel\Library\ScriptAssemblies\Unity.Recorder.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Recorder.Base">
+     <HintPath>C:\Users\celil\Desktop\Fortune-Wheel\Fortune Wheel\Library\ScriptAssemblies\Unity.Recorder.Base.dll</HintPath>
+     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">

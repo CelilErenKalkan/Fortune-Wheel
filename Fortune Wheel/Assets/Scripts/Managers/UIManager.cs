@@ -42,7 +42,7 @@ public class UIManager : MonoSingleton<UIManager>
     private const int RevivePrice = 10;
     
     public bool IsSafeZone() => zoneNo % 5 == 0;
-    public bool IsSuperSafeZone() => zoneNo % 30 == 0;
+    public bool IsSuperSafeZone() => zoneNo % 30 == 0 && zoneNo != 0;
 
     // Start is called before the first frame update
     private void Start()
